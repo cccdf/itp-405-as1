@@ -1,12 +1,24 @@
 <?php
 $pdo = new PDO('sqlite:chinook.db');
 $sql = 'SELECT * FROM playlists';
+
+
 $statement = $pdo->prepare($sql);
 $statement->execute();
 $playlists = $statement->fetchAll(PDO::FETCH_OBJ);
-
-// var_dump($name);
 ?>
+
+<form action="index.php" method="get">
+  <input
+    type="text"
+    name="search"
+    placeholder="Search..."
+    value="<?php echo isset($_GET['search']) ? $_GET['search'] : '' ?>">
+
+  <button type="submit">
+    Search
+  </button>
+</form>
 
 <h1>Playlists</h1>
 <table>
