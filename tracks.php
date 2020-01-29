@@ -3,8 +3,6 @@ if (!isset($_GET['playlist'])) {
     header('Location: index.php');
     exit();
   }
-
-
 $pdo = new PDO('sqlite:chinook.db');
 $sql = 'SELECT playlists.Name as PlaylistName, tracks.Name as TrackName,albums.Title as Title, artists.Name as ArtistName, invoice_items.UnitPrice as Price,
 media_types.Name as MediaName, genres.Name as GenreName
